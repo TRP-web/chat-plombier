@@ -7,6 +7,7 @@ git clone --single-branch -b main  https://github.com/TRP-web/node-start-pattern
 ## This project is using 
 - typeScript
 - nodemone
+- dotenv
 - eslint
 - express
 - mongoose
