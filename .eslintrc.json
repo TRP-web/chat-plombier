@@ -60,6 +60,8 @@
             {
                 "max": 1
             }
-        ]
+        ],
+        // local
+        "@typescript-eslint/no-non-null-assertion": "off"
     }
 }

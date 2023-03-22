@@ -1,8 +1,9 @@
 import express from "express"
-import AdminController from "../controllers/admin.js"
+import AdminController from "../controllers/Admin.js"
 
 export enum IAdminRouters {
     login = "/log-in",
+    // info = "/info"
 }
 
 const adminRouter = express.Router()
