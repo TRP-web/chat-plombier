@@ -13,7 +13,7 @@ export interface ICallRequests {
 }
 
 const schemaCallRequest = new mongoose.Schema<ICallRequest>({
-    phoneNumber: { type: String, required: true },
+    phoneNumber: { type: String, required: [true, "phoneNumber is required"] },
     name: { type: String, required: false }
 })
 

@@ -10,4 +10,5 @@ const userRouter = express.Router()
 
 userRouter.post(IUserRouters.createCall, UserController.createCall)
 userRouter.post(IUserRouters.createJob, UserController.createJob)
+userRouter.get(IUserRouters.getSchedual, UserController.getSchedule)
 export default userRouter

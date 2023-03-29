@@ -9,7 +9,7 @@ import AdminRerqustsController from "../controllers/AdminRequests.js"
 enum IAdminRequestRouters {
     createBlock = "/create-block",
     deleteBlock = "/delete-block",
-    info = "/get-info"
+    info = "/get-info", 
 }
 
 const adminRequestsRouter = express.Router()
@@ -28,5 +28,7 @@ adminRequestsRouter.use("/admin", (req: express.Request, res: express.Response, 
 })
 
 adminRequestsRouter.get(IAdminRequestRouters.info, AdminRerqustsController.getInfo)
+adminRequestsRouter.post(IAdminRequestRouters.createBlock, AdminRerqustsController.createBlock)
+adminRequestsRouter.delete(IAdminRequestRouters.deleteBlock, AdminRerqustsController.deleteItemRequest)
 
 export default adminRequestsRouter
