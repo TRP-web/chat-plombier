@@ -4,7 +4,6 @@ import Admin from "../shemes/admin.js"
 import UserService from "../services/User.js"
 import JobRecquests, { IJobRequest, IJobRequests } from "../shemes/jobRequests.js"
 import CallRequests from "../shemes/callRequests.js"
-import mongoose from "mongoose"
 
 interface ICallRequest {
     phoneNumber: string | undefined
@@ -35,7 +34,6 @@ class UserController {
             } else res.status(400).send({ message: "phone is required" })
         } catch (err) {
             res.status(500).send({ message: "server error" })
-            console.log(err)
         }
     }
 
@@ -61,7 +59,6 @@ class UserController {
             } else res.status(500).send({ message: "server error: have't found an admin" })
         } catch (err) {
             res.status(500).send({ message: "server error" })
-            console.log(err)
         }
     }
 
@@ -73,7 +70,6 @@ class UserController {
             } else res.status(500).send({ message: "admin don't find" })
         } catch (err) {
             res.status(500).send({ message: "server error" })
-            console.log(err)
         }
 
     }

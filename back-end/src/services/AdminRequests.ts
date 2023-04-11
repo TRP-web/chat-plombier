@@ -21,7 +21,6 @@ class AdminRequestsService {
                 })
             } catch (error) {
                 reject(error)
-                console.log(error)
             }
         })
 

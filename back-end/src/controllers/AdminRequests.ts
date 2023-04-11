@@ -39,6 +39,7 @@ class AdminRerqustsController {
 
                 JobRequestModel?.requests.push({
                     // _id: new mongoose.Types.ObjectId(),
+                    prise: 0,
                     address: "blocked",
                     description: "blocked",
                     phoneNumber: "blocked",
@@ -68,7 +69,6 @@ class AdminRerqustsController {
                         { new: true }
                     )
                     
-                console.log(JobRequestModel)
                 JobRequestModel?.save()
                     .then(result => res.status(200).send(result))
                     .catch(err => res.status(500).send({ message: err }))

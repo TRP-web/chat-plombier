@@ -1,0 +1,63 @@
+{
+  "extends": [
+    "next/babel",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "no-unused-vars": [
+      "off",
+      {
+        "vars": "all",
+        "args": "none",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "no-var": "error",
+    "no-console": "warn",
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "prefer-const": "error",
+    "semi": [
+      "warn",
+      "never"
+    ],
+    "no-empty": "warn",
+    "no-multiple-empty-lines": [
+      "warn",
+      {
+        "max": 1
+      }
+    ],
+    // "prefer-arrow/prefer-arrow-functions": [
+    //   "error",
+    //   {
+    //     "disallowPrototype": true,
+    //     "singleReturnOnly": false,
+    //     "classPropertiesAllowed": false
+    //   }
+    // ],
+    "prefer-arrow-callback": [
+      "error",
+      {
+        "allowNamedFunctions": true
+      }
+    ],
+    "func-style": [
+      "error",
+      "expression",
+      {
+        "allowArrowFunctions": true
+      }
+    ],
+    // local
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "react/react-in-jsx-scope": "off"
+  }
+}

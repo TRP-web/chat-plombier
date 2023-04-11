@@ -1,12 +1,8 @@
 import { IDayOfWeek, IJobRequest, IJobRequests, ITimeOfDay } from "../shemes/jobRequests.js"
-import { ICallRequests } from "../shemes/callRequests.js"
 import { ISchedule } from "../models/ISchedule.js"
 
 class UserScrvice {
 
-    createCall = (array: ICallRequests) => {
-        console.log(array)
-    }
     createJob = (obj: IJobRequest): { result: boolean, badkey?: string } => {
 
         const objKeys = Object.keys(obj)

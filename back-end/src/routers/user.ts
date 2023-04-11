@@ -1,6 +1,6 @@
 import express from "express"
 import UserController from "../controllers/User.js"
-enum IUserRouters {
+export enum IUserRouters {
     createCall = "/create-call",
     createJob = "/create-job",
     getSchedual = "/get-schedule"

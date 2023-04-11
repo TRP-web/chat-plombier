@@ -6,7 +6,7 @@ import express from "express"
 import jwt from "jsonwebtoken"
 import AdminRerqustsController from "../controllers/AdminRequests.js"
 
-enum IAdminRequestRouters {
+export enum IAdminRequestRouters {
     createBlock = "/create-block",
     deleteBlock = "/delete-block",
     info = "/get-info", 
@@ -17,7 +17,6 @@ adminRequestsRouter.use("/admin", (req: express.Request, res: express.Response, 
     const token = req.header("token")
     if (token) {
         jwt.verify(token, SECRET!, (err, decode) => {
-            console.log(decode)
             if (decode) {
                 next()
             } else {

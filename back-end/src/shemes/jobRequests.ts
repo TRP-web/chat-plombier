@@ -39,6 +39,7 @@ export interface IJobRequest {
     phoneNumber: string
     email?: string
     address: string
+    prise: number
     time: {
         dateCreated: Date,
         dayInfo: [IDayOfWeek, ITimeOfDay]
@@ -50,13 +51,14 @@ export interface IJobRequests {
 }
 
 const schemaJobRecquest = new mongoose.Schema<IJobRequest>({
-    _id: { type: mongoose.Schema.Types.ObjectId, auto: true},
+    _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
     title: { type: String, required: [true, "\"title\" is required"] },
     description: { type: String, required: [true, "\"description\" is required"] },
     name: { type: String, required: false },
     phoneNumber: { type: String, required: [true, "\"phoneNumber\" is required"] },
     email: { type: String, required: false },
     address: { type: String, required: [true, "\"address\" is required"] },
+    prise: {type: Number, required: [true, "\"prise\" is required"]},
     time: {
         dateCreated: { type: Date, required: [true, "\"dateCreated\" is required"] },
         dayInfo: { type: [String], required: [true, "\"dayInfo\" is required"] }
