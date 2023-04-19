@@ -1,13 +1,13 @@
 import LayOut from "@/components/layout/layout"
 import "@/styles/globals.css"
 import type { AppProps } from "next/app"
-import localFont from 'next/font/local'
 import { Istok_Web } from 'next/font/google'
 
 const istokWeb = Istok_Web({
 	weight: ["400", "700"],
 	style: ["normal", "italic"],
-	subsets: ["latin"]
+	subsets: ["latin"],
+	display: "swap"
 })
 // export const Fonts = localFont({
 //   src: [

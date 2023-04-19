@@ -2,21 +2,33 @@ import React from "react"
 import Container from "../container"
 import Image from "next/image"
 import Link from "next/link"
-
-const Footer: React.FC = () => {
+import { ILogoFields, IPhoneFields } from "@/contentful/contentful"
+interface IFooterProps {
+   logoFields: ILogoFields | undefined
+   phoneFields: IPhoneFields | undefined
+}
+const Footer: React.FC<IFooterProps> = ({ logoFields, phoneFields }) => {
+   const phone = phoneFields?.phone
+   const logoUrl = logoFields?.logo.fields.file.url
 
    return (
       <>
          <footer className="bg-black min-h-[25px] pt-12 pb-4 max-tablet:pt-6 max-tablet:pb-2">
             <Container>
                <div className="flex items-center justify-between mb-9 max-tablet:flex-col max-tablet:mb-4">
-                  <Image alt="logo of site" src={""} />
+                  <Image
+                     alt="logo of site"
+                     src={logoUrl ? `https:${logoUrl}` : ""}
+                     width={2000 / 13}
+                     height={1381 / 13}
+                     className="mb-2"
+                  />
                   <div className="border border-white px-2 py-4  text-white max-w-[305px] max-tablet:mb-2">
                      <span className=" block">Vous êtes un particulier</span>
                      <a href="tel:0170821782" className="flex h-16 mb-1">
                         <span
                            className="flex items-center px-3 bg-white text-black min-w-[130px]"
-                        >01 70 82 17 82</span>
+                        >{phone}</span>
                         <span
                            className="flex items-center px-3 border border-l-0 border-white"
                         >

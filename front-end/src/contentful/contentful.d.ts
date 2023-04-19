@@ -3,21 +3,20 @@
 import { Asset, Entry } from "contentful";
 import { Document } from "@contentful/rich-text-types";
 
-export interface ITestFildFields {
-  /** test titile */
-  testTitile: string;
+export interface IAdvantageFields {
+  /** Фото слева */
+  image: Asset;
 
-  /** description */
-  description: string;
+  /** Заголовок */
+  title: string;
 
-  /** rich */
-  rich: Document;
+  /** Описание */
+  description: Document;
 }
 
-/** fild for testion
- */
+/** 3 секция на главной странице, картинка слева, справа заголовок с текстом под ним */
 
-export interface ITestFild extends Entry<ITestFildFields> {
+export interface IAdvantage extends Entry<IAdvantageFields> {
   sys: {
     id: string;
     type: string;
@@ -26,7 +25,216 @@ export interface ITestFild extends Entry<ITestFildFields> {
     locale: string;
     contentType: {
       sys: {
-        id: "testFild";
+        id: "advantage";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export interface IAdvantage2Fields {
+  /** Картинка */
+  image: Asset;
+
+  /** Заголовок */
+  title: string;
+
+  /** Опесание */
+  decription: Document;
+}
+
+export interface IAdvantage2 extends Entry<IAdvantage2Fields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "advantage2";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export interface IJobFields {
+  /** Заголовок */
+  title: string;
+
+  /** id */
+  id?: string | undefined;
+
+  /** Описание */
+  description: Document;
+
+  /** Список услуг */
+  services: string[];
+
+  /** Не входит в список услуг */
+  isntService: string[];
+
+  /** Цена */
+  prise: number;
+
+  /** Услуга\Цена */
+  servicePrise: IPartPrise[];
+}
+
+export interface IJob extends Entry<IJobFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "job";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export interface ILogoFields {
+  /** logo */
+  logo: Asset;
+}
+
+export interface ILogo extends Entry<ILogoFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "logo";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export interface IMainFields {
+  /** Задний фон на первой странице */
+  background: Asset;
+
+  /** Top petits */
+  topPetits: ITopsPetitsTravaux[];
+
+  /** Tops dépannages */
+  topsDpannages1: ITopsPetitsTravaux[];
+
+  /** Преимущества (3 секция) */
+  advantage: IAdvantage[];
+
+  /** Преимущества 2 */
+  advantage2: IAdvantage2[];
+}
+
+/** Главная страница. Первая страница, которая встречает пользователя. */
+
+export interface IMain extends Entry<IMainFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "main";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export interface IPartPriseFields {
+  /** Значение */
+  value: string;
+
+  /** Цена */
+  prise: number;
+}
+
+export interface IPartPrise extends Entry<IPartPriseFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "partPrise";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export interface IPhoneFields {
+  /** Номер телефона */
+  phone: string;
+}
+
+/** Номер телефона (На главной странице, в подвале). На который будут звонить и с которого будут совершаться звонки */
+
+export interface IPhone extends Entry<IPhoneFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "phone";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export interface IPriceFields {
+  /** Заголовок */
+  title: string;
+
+  /** Картинка */
+  image: Asset;
+
+  /** Описание */
+  decritpion: Document;
+
+  /** Под заголовок */
+  subTitle: string;
+
+  /** Виды робот / роботы */
+  jobs: IJob[];
+}
+
+export interface IPrice extends Entry<IPriceFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "price";
         linkType: "ContentType";
         type: "Link";
       };
@@ -62,9 +270,65 @@ export interface ITestList extends Entry<ITestListFields> {
   };
 }
 
-export type CONTENT_TYPE = "testFild" | "testList";
+export interface ITopsPetitsTravauxFields {
+  /** Картинка */
+  image: Asset;
 
-export type IEntry = ITestFild | ITestList;
+  /** Описание */
+  description: string;
+
+  /** Текст кнопки */
+  buttonText: string;
+
+  /** Название роботы вида робот */
+  jobName: string;
+
+  /** idJob */
+  idJob: string;
+}
+
+/** Карточка из Tops petits travaux на главной странице */
+
+export interface ITopsPetitsTravaux extends Entry<ITopsPetitsTravauxFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "topsPetitsTravaux";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export type CONTENT_TYPE =
+  | "advantage"
+  | "advantage2"
+  | "job"
+  | "logo"
+  | "main"
+  | "partPrise"
+  | "phone"
+  | "price"
+  | "testList"
+  | "topsPetitsTravaux";
+
+export type IEntry =
+  | IAdvantage
+  | IAdvantage2
+  | IJob
+  | ILogo
+  | IMain
+  | IPartPrise
+  | IPhone
+  | IPrice
+  | ITestList
+  | ITopsPetitsTravaux;
 
 export type LOCALE_CODE = "en-US";
 

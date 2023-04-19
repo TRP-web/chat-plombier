@@ -2,20 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
-    font-family: 'Phetsarath Regular';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Phetsarath Regular'), url('./fonts/Phetsarath-Regular.woff') format('woff');
-}
 
-
-@font-face {
-    font-family: 'Phetsarath Bold';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Phetsarath Bold'), url('./fonts/Phetsarath-Bold.woff') format('woff');
-} */
 
 * {
     box-sizing: border-box;
@@ -29,6 +16,14 @@ body {
 /* .header__item:last-child {
     margin-left: 25px;
 } */
+
+.rich-text p {
+    margin-bottom: 15px;
+}
+
+.block-shadow {
+    box-shadow: -4px 4px 11px rgba(0, 0, 0, 0.25);
+}
 
 .mob-true {
     right: 0;

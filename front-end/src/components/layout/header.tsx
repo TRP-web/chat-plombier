@@ -3,9 +3,17 @@ import Container from "../container"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { ILogoFields, IPhoneFields } from "@/contentful/contentful"
 
-const Header: React.FC = () => {
+interface IHeaderProps {
+   logoFields: ILogoFields | undefined
+   phoneFields: IPhoneFields | undefined
+}
 
+const Header: React.FC<IHeaderProps> = ({ logoFields, phoneFields }) => {
+   const url = logoFields?.logo.fields.file.url
+   // const phone = phoneFields?.phone
+   console.log(url)
    const [burger, setBurger] = React.useState<boolean>(false)
 
    const isActive = (href: string): string => {
@@ -20,8 +28,20 @@ const Header: React.FC = () => {
       <>
          <header className="">
             <Container>
-               <div className="header__inner flex items-center justify-between py-5 border-b-[1px] border-cyanbg-dark max-notebook:py-3">
-                  <Image alt="logo of the site" src={""} />
+               <div className="header__inner flex items-center justify-between py-3 border-b-[1px] border-cyanbg-dark max-notebook:py-2">
+                  <div className="max-tablet:max-w-[100px]">
+                     {
+                        url ?
+                           <Image
+                              alt="logo of the site"
+                              src={`https:${url}`}
+                              width={2000 / 13}
+                              height={1381 / 13}
+                           />
+                           : null
+                     }
+
+                  </div>
                   <div className="flex last:ml-3 items-center max-[660px]:hidden">
                      <nav>
                         <ul className="flex font-bold 
@@ -44,8 +64,8 @@ const Header: React.FC = () => {
                            </li>
                            <li className="uppercase header__item mr-[20px] last:mr-[45px] max-tablet:last:mr-7">
                               <Link
-                                 href={""}
-                                 className={`text-black hover:text-cyan-light ${isActive("")}`}>
+                                 href={"/price"}
+                                 className={`text-black hover:text-cyan-light ${isActive("/price")}`}>
                                  lorem
                               </Link>
                            </li>
