@@ -1,6 +1,6 @@
 import { IDayOfWeek, IJobRequest, IJobRequests, ITimeOfDay } from "../shemes/jobRequests.js"
 import { ISchedule } from "../models/ISchedule.js"
-
+type IEnDays = "Sunday" | "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday"
 class UserScrvice {
 
     createJob = (obj: IJobRequest): { result: boolean, badkey?: string } => {
@@ -17,7 +17,7 @@ class UserScrvice {
         return { result: true }
     }
     week = 604800000
-
+    msDay = 1000 * 60 * 60 * 24
     getSchedule = (requestsJobArray: IJobRequests): ISchedule => {
 
         const array = requestsJobArray.requests
@@ -36,10 +36,36 @@ class UserScrvice {
             const element = array[index]
             const timeGep = Number(dateNow) - Number(element.time.dateCreated)
 
+            const enDays: IEnDays[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
             if (timeGep < this.week) { // condition can be bad
                 const elemDay: IDayOfWeek = element.time.dayInfo[0]
-                const elemTime: ITimeOfDay = element.time.dayInfo[1]
-                schedule[elemDay][elemTime] = true
+                //---getting next date of day ---//
+                const day: any = elemDay.replace("next", "")
+                const date = new Date(),
+                    targetDay = enDays.indexOf(day),
+                    targetDate = new Date(
+                        Number(new Date()) + this.msDay
+                    ),
+                    delta = targetDay - date.getDay()
+                console.log(delta)
+                if (delta > 0) {
+                    targetDate.setDate(date.getDate() + delta)
+                } else if (delta === 0) {
+                    targetDate.setDate(date.getDate() + 7) // test condition
+                }
+                else {
+                    targetDate.setDate(date.getDate() + 7 + delta)
+                }
+
+                const futureDate = new Intl.DateTimeFormat("en",
+                    { day: "numeric", month: "numeric", year: "numeric" }
+                ).format(targetDate)
+                console.log(futureDate, element.time.futureDate)
+                if (futureDate === element.time.futureDate) {
+                    const elemTime: ITimeOfDay = element.time.dayInfo[1]
+                    schedule[elemDay][elemTime] = true
+                }
             }
         }
         return schedule

@@ -26,9 +26,9 @@ const istokWeb = Istok_Web({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <LayOut>
-      <main className={`${istokWeb.className} flex-grow`}>
+      {/* <main className={`${istokWeb.className} flex-grow relative`}> */}
         <Component {...pageProps} />
-      </main>
+      {/* </main> */}
     </LayOut>
   )
 }

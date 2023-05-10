@@ -41,7 +41,7 @@ const LayOut: React.FC<ILayOutProps> = (props) => {
 
 	return (
 		<>
-			<div className={`flex justify-between min-h-screen dere flex-col relative overflow-hidden ${istokWeb.className}`} >
+			<div className={`relative  max-tablet:overflow-hidden ${istokWeb.className}`} >
 				<Header logoFields={logo} phoneFields={phone} />
 				{props.children}
 				<Footer logoFields={logo} phoneFields={phone} />

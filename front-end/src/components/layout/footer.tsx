@@ -16,13 +16,18 @@ const Footer: React.FC<IFooterProps> = ({ logoFields, phoneFields }) => {
          <footer className="bg-black min-h-[25px] pt-12 pb-4 max-tablet:pt-6 max-tablet:pb-2">
             <Container>
                <div className="flex items-center justify-between mb-9 max-tablet:flex-col max-tablet:mb-4">
-                  <Image
-                     alt="logo of site"
-                     src={logoUrl ? `https:${logoUrl}` : ""}
-                     width={2000 / 13}
-                     height={1381 / 13}
-                     className="mb-2"
-                  />
+                  <Link href={"/"} className="max-tablet:max-w-[100px] flex items-center">
+                     {
+                        logoUrl ?
+                           <Image
+                              alt="logo of the site"
+                              src={`https:${logoUrl}`}
+                              width={150}
+                              height={103}
+                           />
+                           : null
+                     }
+                  </Link>
                   <div className="border border-white px-2 py-4  text-white max-w-[305px] max-tablet:mb-2">
                      <span className=" block">Vous êtes un particulier</span>
                      <a href="tel:0170821782" className="flex h-16 mb-1">
@@ -48,16 +53,9 @@ const Footer: React.FC<IFooterProps> = ({ logoFields, phoneFields }) => {
                               principale
                            </Link>
                         </li>
-                        <li className="mr-6 max-notebook:mr-5 max-tablet:mr-0 max-tablet:p-2">
-                           <Link
-                              href={"/plombeir"}
-                           >
-                              plomberie
-                           </Link>
-                        </li>
                         <li className="max-tablet:p-2 max-tablet:pb-0">
                            <Link
-                              href={"/lorem"}
+                              href={"/price"}
                            >
                               lorem
                            </Link>

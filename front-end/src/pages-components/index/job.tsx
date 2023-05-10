@@ -23,7 +23,7 @@ const Job: React.FC<IJobProps> = ({ item }) => {
                <p className="text-lg min-h-[90px] mb-4 max-notebook:min-h-[80px] max-notebook:mb-2">
                   {fields.description}
                </p>
-               <Link href={fields.idJob} className="flex justify-center items-center text-white max-w-[300px] w-full bg-cyanbg-dark h-14 m-auto">
+               <Link href={`price/${fields.idJob}`} className="flex justify-center items-center text-white max-w-[300px] w-full bg-cyanbg-dark h-14 m-auto">
                   {fields.buttonText}
                </Link>
             </div>
@@ -31,28 +31,5 @@ const Job: React.FC<IJobProps> = ({ item }) => {
       </>
    )
 }
-
-// export const getStaticPaths: GetStaticPaths = async () => {
-//    const main: any = await client.getEntries({
-//       content_type: "main",
-//    })
-
-//    const mainFields: IMainFields = main.filds
-
-//    const fieldsArray = [...mainFields.topPetits, ...mainFields.topsDpannages1]
-
-//    return {
-//       paths: fieldsArray.map(elem => {
-//          return {
-//             params: {
-//                id: elem.fields.idJob
-//             }
-//          }
-//       }),
-//       fallback: "blocking"
-//    }
-// }
-
-// export const getStaticProps: GetStaticProps = async ({params}) => {
 
 export default Job

@@ -41,6 +41,7 @@ export interface IJobRequest {
     address: string
     prise: number
     time: {
+        futureDate: string
         dateCreated: Date,
         dayInfo: [IDayOfWeek, ITimeOfDay]
     }
@@ -58,8 +59,9 @@ const schemaJobRecquest = new mongoose.Schema<IJobRequest>({
     phoneNumber: { type: String, required: [true, "\"phoneNumber\" is required"] },
     email: { type: String, required: false },
     address: { type: String, required: [true, "\"address\" is required"] },
-    prise: {type: Number, required: [true, "\"prise\" is required"]},
+    prise: { type: Number, required: [true, "\"prise\" is required"] },
     time: {
+        futureDate: {type: String, required: [true, "\"futureDate\" is required"]},
         dateCreated: { type: Date, required: [true, "\"dateCreated\" is required"] },
         dayInfo: { type: [String], required: [true, "\"dayInfo\" is required"] }
     }

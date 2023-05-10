@@ -65,7 +65,7 @@ class AdminRerqustsController {
                 const JobRequestModel = await JobRecquests
                     .findOneAndUpdate(
                         { _id: AdminModel?.jobRequests },
-                        { $pull: { requests: { _id: id } } },//this have push
+                        { $pull: { requests: { _id: id } } },//this have a push
                         { new: true }
                     )
                     

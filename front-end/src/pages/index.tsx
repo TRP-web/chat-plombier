@@ -3,21 +3,20 @@ import Head from "next/head"
 import React from "react"
 import client from "@/contentful"
 import { IMain, IMainFields, IPhoneFields } from "@/contentful/contentful"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import FormPhone from "./index-components/formPhone"
 import { IPhone } from "@/contentful/contentful"
-import LittleJobs from "./index-components/littleJobs"
-import DepJobs from "./index-components/depJobs"
-import Advantage from "./index-components/advantage"
-import AdvantageLast from "./index-components/advantageLast"
+import FormPhone from "@/pages-components/index/formPhone"
+import LittleJobs from "@/pages-components/index/littleJobs"
+import DepJobs from "@/pages-components/index/depJobs"
+import Advantage from "@/pages-components/index/advantage"
+import AdvantageLast from "@/pages-components/index/advantageLast"
+
+// import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 interface IHomeProps {
    mainFilds: IMainFields
    phoneFilds: IPhoneFields
 }
-
 const Home: React.FC<IHomeProps> = ({ mainFilds, phoneFilds }) => {
-   console.log(mainFilds)
    return (
       <>
          <Head>

@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        phone1: "320px",
+        phone1: "321px",
         phone2: "480px",
         tablet: "768px",
         notebook: "1024px",

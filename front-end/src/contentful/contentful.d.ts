@@ -69,7 +69,13 @@ export interface IJobFields {
   id?: string | undefined;
 
   /** Описание */
-  description: Document;
+  description1: Document;
+
+  /** Картинка */
+  image: Asset;
+
+  /** Описание 2 */
+  desription2: Document;
 
   /** Список услуг */
   services: string[];
@@ -82,6 +88,9 @@ export interface IJobFields {
 
   /** Услуга\Цена */
   servicePrise: IPartPrise[];
+
+  /** Время которое будут длится роботы */
+  time: string;
 }
 
 export interface IJob extends Entry<IJobFields> {
