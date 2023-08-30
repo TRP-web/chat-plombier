@@ -46,10 +46,10 @@
             "double"
         ],
         "prefer-const": "error",
-        "indent": [
-            "warn",
-            4
-        ],
+        // "indent": [
+        //     "warn",
+        //     3
+        // ],
         "semi": [
             "warn",
             "never"

@@ -1,6 +1,6 @@
 import express from "express"
 import Admin from "../shemes/admin.js"
-import { ICallRequests } from "../shemes/callRequests.js"
+import CallRequests, { ICallRequests } from "../shemes/callRequests.js"
 import JobRecquests, { IJobRequest, IJobRequests } from "../shemes/jobRequests.js"
 import { ITypeRequestBody } from "../types/ITypedRequest.js"
 import AdminRequestsService from "../services/AdminRequests.js"
@@ -31,12 +31,10 @@ class AdminRerqustsController {
         try {
             const body = req.body
             const [dayOfWeek, timeOfDay] = body.dayInfo
-
             const schedule = await AdminRequestsService.createBlock()
             if (!schedule[dayOfWeek][timeOfDay]) {
                 const AdminModle = await Admin.findOne({})
                 const JobRequestModel = await JobRecquests.findById(AdminModle?.jobRequests)
-
                 JobRequestModel?.requests.push({
                     // _id: new mongoose.Types.ObjectId(),
                     prise: 0,
@@ -50,6 +48,7 @@ class AdminRerqustsController {
                 JobRequestModel?.save()
                     .then(result => { res.status(200).send({ result }) })
                     .catch(err => { res.status(500).send({ message: err.message }) })
+
             } else res.status(400).send({ message: "space in the schedule is busy" })
         } catch (error) {
             res.status(500).send({ message: error })
@@ -68,7 +67,7 @@ class AdminRerqustsController {
                         { $pull: { requests: { _id: id } } },//this have a push
                         { new: true }
                     )
-                    
+
                 JobRequestModel?.save()
                     .then(result => res.status(200).send(result))
                     .catch(err => res.status(500).send({ message: err }))
@@ -76,6 +75,21 @@ class AdminRerqustsController {
         } catch (err) {
             res.status(500).send({ message: err })
         }
+    }
+    deleteCall = async (req: ITypeRequestBody<{ id: mongoose.Types.ObjectId }>, res: express.Response) => {
+        const id = req.body.id
+        if (!id) {
+            return res.status(400).send({ message: "id is requied" })
+        }
+        const AdminModel = await Admin.findOne({})
+        const CallRequestsModel = await CallRequests.findOneAndUpdate(
+            { _id: AdminModel?.callRequests },
+            { $pull: { requests: { _id: id } } },
+            { new: true }
+        )
+        CallRequestsModel?.save()
+            .then(result => res.status(200).send(result))
+            .catch(err => res.status(500).send({ message: err }))
     }
 }
 

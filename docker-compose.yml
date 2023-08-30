@@ -1,13 +1,13 @@
 version: '2'
 
 services:
-  # front-end:
-  #   build: front-end/
-  #   ports:
-  #     - 3001:3001
-  #   command: npm start
-  #   env_file:
-  #     - .env
+  front-end:
+    build: front-end/
+    ports:
+      - 3001:3001
+    command: npm start
+    env_file:
+      - .env
 
   back-end:
     build: back-end/

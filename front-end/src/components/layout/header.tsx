@@ -70,7 +70,7 @@ const Header: React.FC<IHeaderProps> = ({ logoFields, phoneFields }) => {
                               <Link
                                  href={"/price"}
                                  className={`text-black hover:text-cyan-light ${isActive("/price")}`}>
-                                 lorem
+                                 service
                               </Link>
                            </li>
                         </ul>

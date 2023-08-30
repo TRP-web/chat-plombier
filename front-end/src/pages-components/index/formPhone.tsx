@@ -23,6 +23,8 @@ const FormPhone: React.FC<IFormPhoneProps> = ({ mainFields, phoneFields }) => {
       try {
          const res = await backEnd.post(IUrls.createCall, data)
          setPhoneError("")
+         setPhoneValue("")
+         setName("")
       } catch (err) {
       }
 

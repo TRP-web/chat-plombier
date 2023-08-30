@@ -1,13 +1,12 @@
-import LayOut from "@/components/layout/layout"
-import "@/styles/globals.css"
+import "../globals.css"
 import type { AppProps } from "next/app"
 import { Istok_Web } from 'next/font/google'
 
 const istokWeb = Istok_Web({
-	weight: ["400", "700"],
-	style: ["normal", "italic"],
-	subsets: ["latin"],
-	display: "swap"
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap"
 })
 // export const Fonts = localFont({
 //   src: [
@@ -25,8 +24,6 @@ const istokWeb = Istok_Web({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <LayOut>
-        <Component {...pageProps} />
-    </LayOut>
+    <Component {...pageProps} />
   )
 }

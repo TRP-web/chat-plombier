@@ -9,7 +9,8 @@ import AdminRerqustsController from "../controllers/AdminRequests.js"
 export enum IAdminRequestRouters {
     createBlock = "/create-block",
     deleteBlock = "/delete-block",
-    info = "/get-info", 
+    deleteCall = "/delete-call",
+    info = "/get-info",
 }
 
 const adminRequestsRouter = express.Router()
@@ -23,11 +24,12 @@ adminRequestsRouter.use("/admin", (req: express.Request, res: express.Response, 
                 res.status(400).send({ message: "bad token", })
             }
         })
-    } else res.status(400).send({message: "bad token"})
+    } else res.status(400).send({ message: "bad token" })
 })
 
 adminRequestsRouter.get(IAdminRequestRouters.info, AdminRerqustsController.getInfo)
 adminRequestsRouter.post(IAdminRequestRouters.createBlock, AdminRerqustsController.createBlock)
 adminRequestsRouter.delete(IAdminRequestRouters.deleteBlock, AdminRerqustsController.deleteItemRequest)
+adminRequestsRouter.delete(IAdminRequestRouters.deleteCall, AdminRerqustsController.deleteCall)
 
 export default adminRequestsRouter

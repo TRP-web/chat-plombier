@@ -57,7 +57,7 @@ const Footer: React.FC<IFooterProps> = ({ logoFields, phoneFields }) => {
                            <Link
                               href={"/price"}
                            >
-                              lorem
+                              service
                            </Link>
                         </li>
                      </ul>
