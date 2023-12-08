@@ -14,14 +14,7 @@ import createAdmin from "./funcitons/createAdmin.js"
 import cookieParser from "cookie-parser"
 const app = express()
 app.use(cookieParser())
-app.use(cors({
-	credentials: true,
-	exposedHeaders: ["set-cookie"],
-	origin: [
-		"http://localhost:3002",
-		"http://localhost:3001",
-	],
-}))
+app.use(cors())
 app.use(express.json())
 app.use(adminRouter)
 app.use(adminRequestsRouter)
