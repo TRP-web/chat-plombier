@@ -13,7 +13,7 @@ services:
     build: back-end/
     # volumes: # - D:\web\full-stack\chat-plombier\back-end:/app/back-end
     ports:
-      - 3000:3000
+      - 3002:3002
     command: node index.js
     env_file:
       - .env
